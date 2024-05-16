@@ -1,0 +1,54 @@
+<!--
+  Name: Jinseok Kim (Justin)
+  Date: May 15, 2024
+  Section: CSE 154 AC
+  This is the space.html page, which represents a simple game where a character jumps over obstacles.
+  It defines the texts and containers needed in the game.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avoid the Obstacles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Jacquard+12+Charted&family=Jersey+25+Charted&family=Nova+Mono&display=swap" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <script src="index.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Avoid the Obstacles!</h1>
+    <hr>
+    <p>Rules</p>
+    <p>1. Press the enter key to start</p>
+    <p>2. Press the space key to jump over obstacles.</p>
+    <p>3. Game ends when you hit an obstacle.</p>
+  </header>
+  <main>
+    <section id="timer">
+      <h2 id="current-record">Time: 00:00</h2>
+      <h2 id="best-record">Best Record: 00:00</h2>
+    </section>
+      <section id="game-container">
+        <section id="above-ground">
+          <section id="character-container">
+            <section id="character">
+            </section>
+          </section>
+          <section id="obstacle-container">
+            <section id="obstacle">
+            </section>
+          </section>
+        </section>
+        <hr>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <p>This game retrieves the image and speed of obstacles from the server.</p>
+  </footer>
+</body>
+</html>
