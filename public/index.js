@@ -125,7 +125,6 @@
    */
   function startTimer() {
     if (timerID) {
-      console.log("multiple call");
       clearInterval(timerID);
     }
 
