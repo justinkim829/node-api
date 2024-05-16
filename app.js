@@ -76,8 +76,6 @@ app.get('/getImages', function(req, res) {
 });
 
 app.use(express.static('public'));
-const PORT = process.env.PORT || 8000;
-app.listen(PORT);
 
 /**
  * Checks if a given string is an integer.
@@ -88,3 +86,6 @@ function isInteger(str) {
   const num = parseInt(str);
   return !isNaN(num) && num.toString() === str;
 }
+
+const PORT = process.env.PORT || 8000;
+app.listen(PORT);
