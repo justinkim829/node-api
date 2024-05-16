@@ -14,6 +14,7 @@
   window.addEventListener('load', init);
 
   let isEnterPressed = false;
+
   /**
    * Initializes the game by setting up event listeners and adding initial images.
    */
@@ -52,7 +53,6 @@
    */
   async function addImages() {
     let imageData = await getData("http://localhost:8000/getImages", false);
-    console.log(imageData);
     let charImg = gen("img");
     charImg.src = imageData.characterPath;
     id("character").innerHTML = "";
@@ -73,7 +73,7 @@
     character.classList.add("jumping");
     character.addEventListener('animationend', () => {
       character.classList.remove("jumping");
-    }, { once: true });
+    }, {once: true});
   }
 
   /**
@@ -83,8 +83,8 @@
   async function moveleft() {
     let obstacle = qs("#obstacle");
     let leftPosition = obstacle.offsetLeft;
-    const hrTag = qs("#game-container hr")
-    const hrTagLeft = hrTag.getBoundingClientRect().left
+    const hrTag = qs("#game-container hr");
+    const hrTagLeft = hrTag.getBoundingClientRect().left;
     let speed = await getData("http://localhost:8000/speed", true);
     requestAnimationFrame(animate);
 
@@ -103,6 +103,7 @@
           leftPosition = 0;
           speed = await getData("http://localhost:8000/speed", true);
         }
+
         // I changed the direct style because the position value is not constant.
         obstacle.style.transform = `translateX(${leftPosition}px)`;
         requestAnimationFrame(animate);
@@ -113,21 +114,21 @@
     }
   }
 
-  let countUp = 0;
 
   /**
    * Starts the game timer.
    * No return value.
    */
   function startTimer() {
+    let countUp = 0;
     let timerID = setInterval(() => {
       if (!checkCollision()) {
         countUp += 1;
         id("current-record").textContent = "Time: " + sectoMinSec(countUp);
       } else {
+        clearInterval(timerID);
         calculateRecord(countUp);
         countUp = 0;
-        clearInterval(timerID);
       }
     }, 1000);
   }
@@ -202,12 +203,10 @@
       characterRect.bottom > obstacleRect.top &&
       characterRect.top < obstacleRect.bottom
     ) {
-      console.log("collision detected");
       return true;
     }
     return false;
   }
-
 
   /**
    * Generates a new HTML element of the specified type.

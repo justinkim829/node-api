@@ -47,25 +47,19 @@ header p {
   align-items: flex-end;
 }
 
-#obstacle-container, #character-container{
+#obstacle-container, #character-container {
   position: relative;
 }
 
 #obstacle-container {
   width: 70px;
   height: 70px;
+  margin-right: 5%;
 }
 
 #character-container {
   width: 80px;
   height: 80px;
-}
-
-#obstacle-container {
-  margin-right: 5%;
-}
-
-#character-container {
   margin-left: 5%;
 }
 
@@ -112,6 +106,7 @@ footer {
   0%, 100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-150px);
   }
