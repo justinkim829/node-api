@@ -1,69 +1,68 @@
-# *FILL IN NAME* API Documentation
-*Fill in a short description here about the API's purpose.*
+# *Jinseok Kim* API Documentation
+*This API provides endpoints for a game application, allowing clients to fetch game images, record survival time, and get random speed values.*
 
-## *Fill in Endpoint 1 Title*
-**Request Format:** *Fill in example request format, i.e. the path*
+## *Record Best Survival Time*
+**Request Format:** */record/:seconds*
 
-**Request Type:** *Fill in request type*
+**Request Type:** *GET*
 
 **Returned Data Format**: Plain Text
 
 **Description:** *Fill in description*
 
-**Example Request:** *Fill in example request*
+**Example Request:** *GET /record/45*
 
 **Example Response:**
-*Fill in example response in the ticks*
 
 ```
-
+45
 ```
 
 **Error Handling:**
-*Fill in an example of the error handling*
+400 Bad Request when given parameter is not an integer.
 
 
-## *Fill in Endpoint 2 Title*
-**Request Format:** *Fill in example request format, i.e. the path*
+## *Get Random Speed of Obstacle*
+**Request Format:** */speed*
 
-**Request Type:** *Fill in request type*
+**Request Type:** *GET*
+
+**Returned Data Format**: Plain Text
+
+**Description:** *Returns a random speed value between 12 and 33.*
+
+**Example Request:** *GET /speed*
+
+**Example Response:**
+
+```
+25.672
+```
+
+**Error Handling:**
+There is no specific error handling for this endpoint as it always returns a random speed.
+
+
+## *Get Game Images*
+**Request Format:** */getImages*
+
+**Request Type:** *GET*
 
 **Returned Data Format**: JSON
 
-**Description:** *Fill in description*
+**Description:** *Returns paths to a random character image and the corresponding obstacle image.*
 
-**Example Request:** *Fill in example request*
+**Example Request:** GET /getImages*
 
 **Example Response:**
-*Fill in example response in the {}*
 
-```json
+```
 {
-
+  "characterPath": "elon-musk.png",
+  "obstaclePath": "tesla.png"
 }
-```
-
-**Error Handling:**
-*Fill in an example of the error handling*
-
-
-## *Fill in Endpoint 3 Title*
-**Request Format:** *Fill in example request format, i.e. the path*
-
-**Request Type:** *Fill in request type*
-
-**Returned Data Format**: Plain Text
-
-**Description:** *Fill in description*
-
-**Example Request:** *Fill in example request*
-
-**Example Response:**
-*Fill in example response in the {}*
-
-```
 
 ```
 
 **Error Handling:**
-*Fill in an example of the error handling*
+There is no specific error handling for this endpoint as it always returns a valid JSON response.

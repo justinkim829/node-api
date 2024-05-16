@@ -43,6 +43,8 @@
    * No return value.
    */
   function resetGame() {
+
+    // I directly changed the style to make the transformation applied immediately.
     qs("#obstacle").style.transform = "translateX(0px)";
     id("current-record").textContent = "Time: 00:00";
   }

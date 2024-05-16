@@ -1,3 +1,10 @@
+/**
+ * Name: Jinseok Kim
+ * Section: CSE 154 AC
+ * Node.js web service for a game application.
+ * Provides endpoints for fetching game images, recording survival time, and getting random speed values.
+ */
+
 "use strict";
 
 const express = require('express');
@@ -24,20 +31,40 @@ invaders-ghost-pacman-purple-super-smash-bros-for-nintendo-3ds-and-wii-u-thumbna
 const CHAR_PATHS = ["elon-musk.png", "pacman.png"];
 const OBSTACLE_PATHS = ["tesla.png", "ghost.png"];
 
+/**
+ * Handles requests to record the best survival time.
+ * Updates the best survival time if the new record is higher.
+ * @param {string} req.params.seconds - The survival time in seconds of the most recent game
+ * @return {string} - The best survival time recorded.
+ */
 app.get('/record/:seconds', function(req, res) {
-  let record = parseInt(req.params.seconds);
-  if (record > bestSurvivalTime) {
-    bestSurvivalTime = record;
+  let record = req.params.seconds;
+  if (isInteger(record)) {
+    record = parseInt(record);
+    if (record > bestSurvivalTime) {
+      bestSurvivalTime = record;
+    }
+    res.type("text");
+    res.status(200).send(bestSurvivalTime.toString());
+  } else {
+    res.status(400).send("Inputted parameter is not an integer.");
   }
-  res.type("text");
-  res.status(200).send(bestSurvivalTime.toString());
 });
 
+/**
+ * Handles requests to get a random speed value for the obstacle.
+ * @return {string} - A random speed value between 12 and 33.
+ */
 app.get('/speed', function(req, res) {
   let speed = Math.random() * (33 - 12) + 12;
+  res.type("text");
   res.status(200).send(speed.toString());
 });
 
+/**
+ * Handles requests to get images of the character and obstacle.
+ * @return {Object} - An object containing paths to a character image and an obstacle image.
+ */
 app.get('/getImages', function(req, res) {
   let imageIndex = Math.floor(Math.random() * CHAR_PATHS.length);
   let returnJSON = {
@@ -50,3 +77,8 @@ app.get('/getImages', function(req, res) {
 app.use(express.static('public'));
 const PORT = process.env.PORT || 8000;
 app.listen(PORT);
+
+function isInteger(str) {
+  const num = parseInt(str);
+  return !isNaN(num) && num.toString() === str;
+}
