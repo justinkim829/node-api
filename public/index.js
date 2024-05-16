@@ -2,10 +2,9 @@
  * Name: Jinseok Kim
  * Date: May 15, 2024
  * Section: AC
- * Represents a simple game where a character jumps over obstacles.
- * It includes functions such as handling character jumps, moving obstacles,
- * starting a timer, checking for collisions,
- * and interacting with a backend server to fetch data and update records.
+ * This file represents a simple game where a character jumps over obstacles.
+ * It includes functions such as handling character jumps, moving obstacles, starting a timer,
+ * checking for collisions, and interacting with a backend server to fetch data and update records.
  */
 
 "use strict";
