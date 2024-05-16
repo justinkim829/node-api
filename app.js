@@ -15,18 +15,18 @@ app.use(express.json());
 
 let bestSurvivalTime = 0;
 
-/*
-elon musk img:
-https://hips.hearstapps.com/hmg-prod/images/gettyimages-1229892983-square.jpg
-tesla img:
-https://static.dezeen.com/uploads/2017/07/tesla-model-3-design_dezeen_sq-1-300x300.jpg
-pacman img:
-https://wiki.manjaro.org/images/9/90/Pacman.jpg
-pacman ghost img:
-https://e7.pngegg.com/pngimages/829/428/
-png-clipart-ms-pac-man-pac-man-adventures-in-time-pac-man-party-space-
-invaders-ghost-pacman-purple-super-smash-bros-for-nintendo-3ds-and-wii-u-thumbnail.png
-*/
+/**
+ * elon musk img:
+ * https://hips.hearstapps.com/hmg-prod/images/gettyimages-1229892983-square.jpg
+ * tesla img:
+ * https://static.dezeen.com/uploads/2017/07/tesla-model-3-design_dezeen_sq-1-300x300.jpg
+ * pacman img:
+ * https://wiki.manjaro.org/images/9/90/Pacman.jpg
+ * pacman ghost img:
+ * https://e7.pngegg.com/pngimages/829/428/
+ * png-clipart-ms-pac-man-pac-man-adventures-in-time-pac-man-party-space-
+ * invaders-ghost-pacman-purple-super-smash-bros-for-nintendo-3ds-and-wii-u-thumbnail.png
+ */
 
 const CHAR_PATHS = ["elon-musk.png", "pacman.png"];
 const OBSTACLE_PATHS = ["tesla.png", "ghost.png"];
@@ -78,6 +78,11 @@ app.use(express.static('public'));
 const PORT = process.env.PORT || 8000;
 app.listen(PORT);
 
+/**
+ * Checks if a given string is an integer.
+ * @param {string} str - The string to check.
+ * @return {boolean} - True if the string is an integer, false otherwise.
+ */
 function isInteger(str) {
   const num = parseInt(str);
   return !isNaN(num) && num.toString() === str;
