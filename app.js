@@ -2,7 +2,7 @@
  * Name: Jinseok Kim
  * Section: CSE 154 AC
  * Node.js web service for a game application.
- * Provides endpoints for fetching game images, recording survival time, and getting random speed values.
+ * Provides endpoints for fetching game images, recording best survival time, and getting random speed values.
  */
 
 "use strict";
