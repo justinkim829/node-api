@@ -4,7 +4,8 @@
  * Section: AC
  * This file represents a simple game where a character jumps over obstacles.
  * It includes functions such as handling character jumps, moving obstacles, starting a timer,
- * checking for collisions, and interacting with a backend server to fetch data and update records.
+ * checking for collisions, a
+ * nd interacting with a backend server to fetch data and update records.
  */
 
 "use strict";
@@ -116,13 +117,20 @@
     }
   }
 
+  let timerID;
+
   /**
    * Starts the game timer.
    * No return value.
    */
   function startTimer() {
+    if (timerID) {
+      console.log("multiple call");
+      clearInterval(timerID);
+    }
+
     let countUp = 0;
-    let timerID = setInterval(() => {
+    timerID = setInterval(() => {
       if (!checkCollision()) {
         countUp += 1;
         id("current-record").textContent = "Time: " + sectoMinSec(countUp);
