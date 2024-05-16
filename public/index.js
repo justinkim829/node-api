@@ -114,7 +114,6 @@
     }
   }
 
-
   /**
    * Starts the game timer.
    * No return value.
