@@ -53,10 +53,10 @@ app.get('/record/:seconds', function(req, res) {
 
 /**
  * Handles requests to get a random speed value for the obstacle.
- * @return {string} - A random speed value between 12 and 33.
+ * @return {string} - A random speed value between 15 and 37.
  */
 app.get('/speed', function(req, res) {
-  let speed = Math.random() * (33 - 12) + 12;
+  let speed = Math.random() * (37 - 15) + 15;
   res.type("text");
   res.status(200).send(speed.toString());
 });

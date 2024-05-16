@@ -29,7 +29,7 @@
 
 **Returned Data Format**: Plain Text
 
-**Description:** *Returns a random speed value between 12 and 33.*
+**Description:** *Returns a random float speed value between 15 and 37.*
 
 **Example Request:** *GET /speed*
 
