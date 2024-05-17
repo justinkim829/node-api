@@ -9,12 +9,13 @@
 "use strict";
 
 const express = require('express');
+const { type } = require('os');
 const app = express();
+
+const fs = require("fs").promises;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-
-let bestSurvivalTime = 0;
 
 /**
  * elon musk img:
@@ -38,17 +39,18 @@ const OBSTACLE_PATHS = ["tesla.png", "ghost.png"];
  * @param {string} req.params.seconds - The survival time in seconds of the most recent game
  * @return {string} - The best survival time recorded.
  */
-app.get('/record/:seconds', function(req, res) {
+app.get('/record/:seconds', async function(req, res) {
   let record = req.params.seconds;
   if (isInteger(record)) {
-    record = parseInt(record);
-    if (record > bestSurvivalTime) {
-      bestSurvivalTime = record;
+    try {
+      let bestRecord = await updateBestRecord(record);
+      console.log(bestRecord);
+      res.status(200).type("text").send(bestRecord);
+    } catch (err) {
+      res.status(500).type("text").send("Internal Server Error");
     }
-    res.type("text");
-    res.status(200).send(bestSurvivalTime.toString());
   } else {
-    res.status(400).send("Inputted parameter is not an integer.");
+    res.status(400).type("text").send("Inputted parameter is not an integer.");
   }
 });
 
@@ -85,6 +87,27 @@ app.use(express.static('public'));
 function isInteger(str) {
   const num = parseInt(str);
   return !isNaN(num) && num.toString() === str;
+}
+
+/**
+ * Updates the best record if the current record is higher than the best record.
+ * @param {string} record - Time survived for the most recent game
+ * @return {string} data - Best Record
+ */
+async function updateBestRecord(record) {
+  try {
+    let data = await fs.readFile('bestrecord.txt', 'utf8');
+    data = parseInt(data);
+    record = parseInt(record);
+    if (record > data) {
+      data = record;
+    }
+    data = data.toString()
+    await fs.writeFile('bestrecord.txt', data, 'utf8');
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 const PORT = process.env.PORT || 8000;

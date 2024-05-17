@@ -44,8 +44,12 @@
    * No return value.
    */
   function resetGame() {
-
-    // I directly changed the style to make the transformation applied immediately.
+    /**
+     * I changed the style directly because I need to set the position value
+     * to a random speed value I get from the server later in the game (not constant).
+     * If I try adding or removing classes, i would not be able to set the position
+     * to a float value.
+     */
     qs("#obstacle").style.transform = "translateX(0px)";
     id("current-record").textContent = "Time: 00:00";
   }
