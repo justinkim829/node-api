@@ -4,12 +4,12 @@
  * Node.js web service for a game application.
  * Provides endpoints for fetching game images,
  * recording best survival time, and getting random speed values.
+ * Use Safari to play the game (obstacle speed matches this browser).
  */
 
 "use strict";
 
 const express = require('express');
-const { type } = require('os');
 const app = express();
 
 const fs = require("fs").promises;
@@ -44,12 +44,14 @@ app.get('/record/:seconds', async function(req, res) {
   if (isInteger(record)) {
     try {
       let bestRecord = await updateBestRecord(record);
-      console.log(bestRecord);
+
       res.status(200).type("text").send(bestRecord);
     } catch (err) {
+
       res.status(500).type("text").send("Internal Server Error");
     }
   } else {
+
     res.status(400).type("text").send("Inputted parameter is not an integer.");
   }
 });
@@ -102,7 +104,7 @@ async function updateBestRecord(record) {
     if (record > data) {
       data = record;
     }
-    data = data.toString()
+    data = data.toString();
     await fs.writeFile('bestrecord.txt', data, 'utf8');
     return data;
   } catch (err) {
