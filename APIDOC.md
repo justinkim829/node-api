@@ -8,7 +8,7 @@
 
 **Returned Data Format**: Plain Text
 
-**Description:** *Fill in description*
+**Description:** *Handles requests to record the best survival time. Updates the best survival time if the new record is higher.*
 
 **Example Request:** *GET /record/45*
 
