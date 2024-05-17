@@ -41,18 +41,16 @@ const OBSTACLE_PATHS = ["tesla.png", "ghost.png"];
  */
 app.get('/record/:seconds', async function(req, res) {
   let record = req.params.seconds;
+  res.type("text");
   if (isInteger(record)) {
     try {
       let bestRecord = await updateBestRecord(record);
-
-      res.status(200).type("text").send(bestRecord);
+      res.status(200).send(bestRecord);
     } catch (err) {
-
-      res.status(500).type("text").send("Internal Server Error");
+      res.status(500).send("Internal Server Error");
     }
   } else {
-
-    res.status(400).type("text").send("Inputted parameter is not an integer.");
+    res.status(400).send("Inputted parameter is not an integer.");
   }
 });
 
