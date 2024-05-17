@@ -20,6 +20,7 @@
 
 **Error Handling:**
 400 Bad Request when given parameter is not an integer.
+500 Server Error when there was an error calculating and sending the best record.
 
 
 ## *Get Random Speed of Obstacle*
